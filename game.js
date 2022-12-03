@@ -12,8 +12,6 @@ Array.prototype.random = function () {
 };
 
 const playRound = (playerSelection, computerSelection) => {
-  let playerIsWinner = false;
-
   if (playerSelection.toLowerCase() === computerSelection) {
     playRound(
       prompt(
@@ -30,6 +28,8 @@ const playRound = (playerSelection, computerSelection) => {
       computerSelection
     );
   } else {
+    let playerIsWinner = false;
+
     switch (playerSelection.toLowerCase()) {
       case "rock":
         if (computerSelection === "scissors") {
@@ -60,13 +60,33 @@ const playRound = (playerSelection, computerSelection) => {
           alert("You Win! Scissors beat Paper");
         }
         break;
-
-      default:
-        break;
     }
 
     return playerIsWinner;
   }
 };
 
-playRound(prompt("Paper, rock or scissors?"), options.random());
+const game = () => {
+  let totalPlayerWins = 0;
+
+  for (let index = 0; index < 5; index++) {
+    const result = playRound(
+      prompt(`Round ${index + 1}. Paper, rock or scissors?`),
+      options.random()
+    );
+
+    if (result === true) {
+      totalPlayerWins = totalPlayerWins + 1;
+    }
+  }
+
+  if (totalPlayerWins > 2) {
+    alert(`Congratulations! You Won with ${totalPlayerWins} wins.`);
+  } else {
+    alert(
+      `Too bad you lost this time! Computer got you! You only won ${totalPlayerWins} times.`
+    );
+  }
+};
+
+game();
