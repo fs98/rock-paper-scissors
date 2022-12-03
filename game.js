@@ -1,68 +1,55 @@
 const options = ["rock", "paper", "scissors"];
 
-// Option One
 const computerPlay = () => {
   const random = Math.floor(Math.random() * options.length);
-  console.log(options[random]);
+  return options[random];
 };
 
-// Option two
-Array.prototype.random = function () {
-  return this[Math.floor(Math.random() * this.length)];
+const userPlay = (computerSelection) => {
+  let userInput = prompt(`Paper, rock or scissors?`);
+
+  if (userInput.toLowerCase() === computerSelection) {
+    const newComputerSelection = computerPlay();
+    console.log("ncs", newComputerSelection);
+    return userPlay(newComputerSelection);
+  } else if (!userInput.trim() || !options.includes(userInput.toLowerCase())) {
+    return userPlay(computerSelection);
+  }
+
+  return userInput;
 };
 
 const playRound = (playerSelection, computerSelection) => {
-  if (playerSelection.toLowerCase() === computerSelection) {
-    playRound(
-      prompt(
-        "It's a tie! Please enter a new valid value. Paper, rock or scissors?"
-      ),
-      options.random()
-    );
-  } else if (
-    !playerSelection ||
-    !options.includes(playerSelection.toLowerCase())
-  ) {
-    playRound(
-      prompt("Please enter a valid value. Paper, rock or scissors?"),
-      computerSelection
-    );
-  } else {
-    let playerIsWinner = false;
+  switch (playerSelection.toLowerCase()) {
+    case "rock":
+      if (computerSelection === "scissors") {
+        console.log("You Win! Rock beats Scissors");
+        return true;
+      } else if (computerSelection === "paper") {
+        console.log("You Lose! Paper beats Rock");
+        return false;
+      }
+      break;
 
-    switch (playerSelection.toLowerCase()) {
-      case "rock":
-        if (computerSelection === "scissors") {
-          playerIsWinner = true;
-          alert("You Win! Rock beats Scissors");
-        } else if (computerSelection === "paper") {
-          playerIsWinner = false;
-          alert("You Lose! Paper beats Rock");
-        }
-        break;
+    case "paper":
+      if (computerSelection === "rock") {
+        console.log("You Win! Paper beats Rock");
+        return true;
+      } else if (computerSelection === "scissors") {
+        console.log("You Lose! Scissors beat Paper");
+        return false;
+      }
+      break;
 
-      case "paper":
-        if (computerSelection === "rock") {
-          playerIsWinner = true;
-          alert("You Win! Paper beats Rock");
-        } else if (computerSelection === "scissors") {
-          playerIsWinner = false;
-          alert("You Lose! Scissors beat Paper");
-        }
-        break;
-
-      case "scissors":
-        if (computerSelection === "rock") {
-          playerIsWinner = false;
-          alert("You Lose! Rock beats Scissors");
-        } else if (computerSelection === "paper") {
-          playerIsWinner = true;
-          alert("You Win! Scissors beat Paper");
-        }
-        break;
-    }
-
-    return playerIsWinner;
+    case "scissors":
+      if (computerSelection === "rock") {
+        console.log("You Lose! Rock beats Scissors");
+        return false;
+      } else if (computerSelection === "paper") {
+        console.log("You Win! Scissors beat Paper");
+        return true;
+      }
+      break;
   }
 };
 
@@ -70,10 +57,12 @@ const game = () => {
   let totalPlayerWins = 0;
 
   for (let index = 0; index < 5; index++) {
-    const result = playRound(
-      prompt(`Round ${index + 1}. Paper, rock or scissors?`),
-      options.random()
-    );
+    const computerSelection = computerPlay();
+    const playerSelection = userPlay(computerSelection);
+
+    const result = playRound(playerSelection, computerSelection);
+
+    console.log("result", result);
 
     if (result === true) {
       totalPlayerWins = totalPlayerWins + 1;
@@ -81,9 +70,9 @@ const game = () => {
   }
 
   if (totalPlayerWins > 2) {
-    alert(`Congratulations! You Won with ${totalPlayerWins} wins.`);
+    console.log(`Congratulations! You Won with ${totalPlayerWins} times.`);
   } else {
-    alert(
+    console.log(
       `Too bad you lost this time! Computer got you! You only won ${totalPlayerWins} times.`
     );
   }
