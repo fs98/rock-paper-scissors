@@ -12,6 +12,8 @@ Array.prototype.random = function () {
 };
 
 const playRound = (playerSelection, computerSelection) => {
+  let playerIsWinner = false;
+
   if (playerSelection.toLowerCase() === computerSelection) {
     playRound(
       prompt(
@@ -31,31 +33,39 @@ const playRound = (playerSelection, computerSelection) => {
     switch (playerSelection.toLowerCase()) {
       case "rock":
         if (computerSelection === "scissors") {
-          console.log("You Win! Rock beats Scissors");
+          playerIsWinner = true;
+          alert("You Win! Rock beats Scissors");
         } else if (computerSelection === "paper") {
-          console.log("You Lose! Paper beats Rock");
+          playerIsWinner = false;
+          alert("You Lose! Paper beats Rock");
         }
         break;
 
       case "paper":
         if (computerSelection === "rock") {
-          console.log("You Win! Paper beats Rock");
+          playerIsWinner = true;
+          alert("You Win! Paper beats Rock");
         } else if (computerSelection === "scissors") {
-          console.log("You Lose! Scissors beat Paper");
+          playerIsWinner = false;
+          alert("You Lose! Scissors beat Paper");
         }
         break;
 
       case "scissors":
         if (computerSelection === "rock") {
-          console.log("You Lose! Rock beats Scissors");
+          playerIsWinner = false;
+          alert("You Lose! Rock beats Scissors");
         } else if (computerSelection === "paper") {
-          console.log("You Win! Scissors beat Paper");
+          playerIsWinner = true;
+          alert("You Win! Scissors beat Paper");
         }
         break;
 
       default:
         break;
     }
+
+    return playerIsWinner;
   }
 };
 
