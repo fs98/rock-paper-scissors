@@ -5,15 +5,16 @@ const computerPlay = () => {
   return options[random];
 };
 
-const userPlay = (computerSelection) => {
-  let userInput = prompt(`Paper, rock or scissors?`);
+const userPlay = (computerSelection, message) => {
+  let userInput = prompt(message);
 
   if (userInput.toLowerCase() === computerSelection) {
+    // Make computer select again because if we don't, user knows what computer selected and can play according to that.
     const newComputerSelection = computerPlay();
-    console.log("ncs", newComputerSelection);
-    return userPlay(newComputerSelection);
+    return userPlay(newComputerSelection, "It's a tie! Please chose again.");
   } else if (!userInput.trim() || !options.includes(userInput.toLowerCase())) {
-    return userPlay(computerSelection);
+    // Used .trim() to cover the case if user enters only spaces
+    return userPlay(computerSelection, "Invalid value! Please chose again.");
   }
 
   return userInput;
@@ -25,31 +26,28 @@ const playRound = (playerSelection, computerSelection) => {
       if (computerSelection === "scissors") {
         console.log("You Win! Rock beats Scissors");
         return true;
-      } else if (computerSelection === "paper") {
+      } else {
         console.log("You Lose! Paper beats Rock");
         return false;
       }
-      break;
 
     case "paper":
       if (computerSelection === "rock") {
         console.log("You Win! Paper beats Rock");
         return true;
-      } else if (computerSelection === "scissors") {
+      } else {
         console.log("You Lose! Scissors beat Paper");
         return false;
       }
-      break;
 
     case "scissors":
-      if (computerSelection === "rock") {
-        console.log("You Lose! Rock beats Scissors");
-        return false;
-      } else if (computerSelection === "paper") {
+      if (computerSelection === "paper") {
         console.log("You Win! Scissors beat Paper");
         return true;
+      } else {
+        console.log("You Lose! Rock beats Scissors");
+        return false;
       }
-      break;
   }
 };
 
@@ -58,11 +56,12 @@ const game = () => {
 
   for (let index = 0; index < 5; index++) {
     const computerSelection = computerPlay();
-    const playerSelection = userPlay(computerSelection);
+    const playerSelection = userPlay(
+      computerSelection,
+      "Paper, rock or scissors?"
+    );
 
     const result = playRound(playerSelection, computerSelection);
-
-    console.log("result", result);
 
     if (result === true) {
       totalPlayerWins = totalPlayerWins + 1;
@@ -70,7 +69,7 @@ const game = () => {
   }
 
   if (totalPlayerWins > 2) {
-    console.log(`Congratulations! You Won with ${totalPlayerWins} times.`);
+    console.log(`Congratulations! You Won with ${totalPlayerWins} wins.`);
   } else {
     console.log(
       `Too bad you lost this time! Computer got you! You only won ${totalPlayerWins} times.`
