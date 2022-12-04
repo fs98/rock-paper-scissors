@@ -55,6 +55,8 @@ const game = () => {
   let totalPlayerWins = 0;
 
   for (let index = 0; index < 5; index++) {
+    console.log(`Round ${index + 1}`);
+
     const computerSelection = computerPlay();
     const playerSelection = userPlay(
       computerSelection,
