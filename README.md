@@ -3,3 +3,5 @@
 ## Rock Paper Scissors Game
 
 The third assignment in a Brainnest Front Training Program - JavaScript Assignment - Part 1
+
+> **Imporant Note:** The game progress is followed through console.
