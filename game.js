@@ -12,8 +12,7 @@ const userPlay = (computerSelection, message) => {
     // Make computer select again because if we don't, user knows what computer selected and can play according to that.
     const newComputerSelection = computerPlay();
     return userPlay(newComputerSelection, "It's a tie! Please chose again.");
-  } else if (!userInput.trim() || !options.includes(userInput.toLowerCase())) {
-    // Used .trim() to cover the case if user enters only spaces
+  } else if (!options.includes(userInput.toLowerCase())) {
     return userPlay(computerSelection, "Invalid value! Please chose again.");
   }
 
