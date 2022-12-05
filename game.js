@@ -8,11 +8,11 @@ const computerPlay = () => {
 const userPlay = (computerSelection, message) => {
   let userInput = prompt(message);
 
-  if (userInput.toLowerCase() === computerSelection) {
+  if (userInput.trim().toLowerCase() === computerSelection) {
     // Make computer select again because if we don't, user knows what computer selected and can play according to that.
     const newComputerSelection = computerPlay();
     return userPlay(newComputerSelection, "It's a tie! Please chose again.");
-  } else if (!options.includes(userInput.toLowerCase())) {
+  } else if (!options.includes(userInput.trim().toLowerCase())) {
     return userPlay(computerSelection, "Invalid value! Please chose again.");
   }
 
@@ -20,7 +20,7 @@ const userPlay = (computerSelection, message) => {
 };
 
 const playRound = (playerSelection, computerSelection) => {
-  switch (playerSelection.toLowerCase()) {
+  switch (playerSelection.trim().toLowerCase()) {
     case "rock":
       if (computerSelection === "scissors") {
         console.log("You Win! Rock beats Scissors");
