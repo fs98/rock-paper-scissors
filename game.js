@@ -54,7 +54,7 @@ const game = () => {
   let totalPlayerWins = 0;
 
   for (let index = 0; index < 5; index++) {
-    console.log(`Round ${index + 1}`);
+    console.log(`%cRound ${index + 1}`, "color: #2d55ff");
 
     const computerSelection = computerPlay();
     const playerSelection = userPlay(
@@ -70,10 +70,14 @@ const game = () => {
   }
 
   if (totalPlayerWins > 2) {
-    console.log(`Congratulations! You Won with ${totalPlayerWins} wins.`);
+    console.log(
+      `%cCongratulations! You Won with ${totalPlayerWins} wins.`,
+      "color: #26c281"
+    );
   } else {
     console.log(
-      `Too bad you lost this time! Computer got you! You only won ${totalPlayerWins} times.`
+      `%cToo bad you lost this time! Computer got you! You only won ${totalPlayerWins} times.`,
+      "color: #d91e18"
     );
   }
 };
