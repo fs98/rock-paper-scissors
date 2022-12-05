@@ -53,6 +53,8 @@ const playRound = (playerSelection, computerSelection) => {
 const game = () => {
   let totalPlayerWins = 0;
 
+  alert(`Welcome to Rock, Paper, Scissors game. Start?`);
+
   for (let index = 0; index < 5; index++) {
     console.log(`%cRound ${index + 1}`, "color: #2d55ff");
 
