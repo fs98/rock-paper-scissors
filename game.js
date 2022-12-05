@@ -8,6 +8,14 @@ const computerPlay = () => {
 const userPlay = (computerSelection, message) => {
   let userInput = prompt(message);
 
+  if (userInput === null) {
+    if (confirm("Are you sure you want to stop playing?")) {
+      return userInput;
+    } else {
+      userInput = prompt(message);
+    }
+  }
+
   if (userInput.trim().toLowerCase() === computerSelection) {
     // Make computer select again because if we don't, user knows what computer selected and can play according to that.
     const newComputerSelection = computerPlay();
@@ -63,6 +71,15 @@ const game = () => {
       computerSelection,
       "Paper, rock or scissors?"
     );
+
+    if (playerSelection === null) {
+      return console.log(
+        `%cWe're sorry you gave up on round ${
+          index + 1
+        }. Refresh the page to play again.`,
+        "color: #d91e18"
+      );
+    }
 
     const result = playRound(playerSelection, computerSelection);
 
