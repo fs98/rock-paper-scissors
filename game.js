@@ -80,6 +80,10 @@ const game = () => {
       "color: #d91e18"
     );
   }
+
+  if (confirm("New Game?")) {
+    window.location.reload();
+  }
 };
 
 game();
