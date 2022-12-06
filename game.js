@@ -1,3 +1,9 @@
+const startGame = () => {
+  const welcomeSection = document.getElementsByClassName("welcome-section")[0];
+  console.log(welcomeSection);
+  welcomeSection.style.display = "none";
+};
+
 const options = ["rock", "paper", "scissors"];
 
 const computerPlay = () => {
@@ -5,30 +11,14 @@ const computerPlay = () => {
   return options[random];
 };
 
-const userPlay = (computerSelection, message) => {
-  let userInput = prompt(message);
+const playRound = (playerSelection) => {
+  const computerSelection = computerPlay();
 
-  if (userInput === null) {
-    if (confirm("Are you sure you want to stop playing?")) {
-      return userInput;
-    } else {
-      userInput = prompt(message);
-    }
+  if (playerSelection === computerSelection) {
+    return console.log("It's a draw!");
   }
 
-  if (userInput.trim().toLowerCase() === computerSelection) {
-    // Make computer select again because if we don't, user knows what computer selected and can play according to that.
-    const newComputerSelection = computerPlay();
-    return userPlay(newComputerSelection, "It's a tie! Please chose again.");
-  } else if (!options.includes(userInput.trim().toLowerCase())) {
-    return userPlay(computerSelection, "Invalid value! Please chose again.");
-  }
-
-  return userInput;
-};
-
-const playRound = (playerSelection, computerSelection) => {
-  switch (playerSelection.trim().toLowerCase()) {
+  switch (playerSelection) {
     case "rock":
       if (computerSelection === "scissors") {
         console.log("You Win! Rock beats Scissors");
@@ -57,52 +47,3 @@ const playRound = (playerSelection, computerSelection) => {
       }
   }
 };
-
-const game = () => {
-  let totalPlayerWins = 0;
-
-  alert(`Welcome to Rock, Paper, Scissors game. Start?`);
-
-  for (let index = 0; index < 5; index++) {
-    console.log(`%cRound ${index + 1}`, "color: #2d55ff");
-
-    const computerSelection = computerPlay();
-    const playerSelection = userPlay(
-      computerSelection,
-      "Paper, rock or scissors?"
-    );
-
-    if (playerSelection === null) {
-      return console.log(
-        `%cWe're sorry you gave up on round ${
-          index + 1
-        }. Refresh the page to play again.`,
-        "color: #d91e18"
-      );
-    }
-
-    const result = playRound(playerSelection, computerSelection);
-
-    if (result === true) {
-      totalPlayerWins = totalPlayerWins + 1;
-    }
-  }
-
-  if (totalPlayerWins > 2) {
-    console.log(
-      `%cCongratulations! You Won with ${totalPlayerWins} wins.`,
-      "color: #26c281"
-    );
-  } else {
-    console.log(
-      `%cToo bad you lost this time! Computer got you! You only won ${totalPlayerWins} times.`,
-      "color: #d91e18"
-    );
-  }
-
-  if (confirm("New Game?")) {
-    window.location.reload();
-  }
-};
-
-game();
