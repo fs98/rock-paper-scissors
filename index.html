@@ -5,9 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fata's Game</title>
-    <script src="./game.js"></script>
+    <script src="./game.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-
+    <section class="welcome-section">
+      <h1>Welcome to</h1>
+      <h3>Paper, Rock, Scissors game</h3>
+      <img height="300" src="./images/rock-paper-scissors-game-rules.png" alt="rock, paper, scissors game rules">
+      <button onclick="startGame()">Start</button>
+    </section>
+    <section class="game-section">
+      <h1>Round 1</h1>
+      <h3>Choose your weapon</h3>
+      <ul class="options">
+        <li onclick="playRound('rock')">
+          <img height="80" src="./images/rock.png" alt="hand-showing-paper">
+          <h3>rock</h3>
+        </li>
+        <li onclick="playRound('paper')">
+          <img height="80" src="./images/paper.png" alt="hand-showing-paper">
+          <h3>paper</h3>
+        </li>
+        <li onclick="playRound('scissors')">
+          <img height="80" src="./images/scissors.png" alt="hand-showing-paper">
+          <h3>scissors</h3>
+        </li>
+      </ul>
+    </section>
   </body>
 </html>

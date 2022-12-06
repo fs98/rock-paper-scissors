@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400;700&display=swap');
+
+:root {
+  --ripe-lemon: #f7ca18;
+  --gin-fizz: #fff9de
+}
+
+body {
+  font-family: "Comic Neue";
+  margin: 0;
+  background-color: var(--ripe-lemon);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.welcome-section, .game-section {
+  background-color: var(--gin-fizz);
+  width: fit-content;
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-section { 
+  display: none; /* temporary */
+}
+
+.welcome-section h1, h3 {
+  text-align: center;
+  text-transform: uppercase;
+  margin: 5px;
+}
+
+.welcome-section img {
+  margin-top: 20px;
+}
+
+.welcome-section button {
+  background-color: var(--ripe-lemon);
+  border: 0;
+  font-weight: bold;
+  padding: 10px 20px;
+  cursor: pointer;
+  width: fit-content;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.welcome-section button:hover {
+  opacity: 80%;
+  transition: 0.5s;
+}
+
+/* Options section */
+
+.game-section h3 {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.game-section ul {
+  list-style: none;
+  padding: 0
+}
+
+.options {
+  display: flex;
+  gap: 30px;
+}
+
+.options li {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.options li:hover {
+  opacity: 50%;
+  transition: 0.5s;
+} 
