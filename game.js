@@ -111,9 +111,26 @@ const displayCurrentResults = (userPoints, computerPoints, draws) => {
   drawsTableCell.innerHTML = draws;
 };
 
+const displayOutcome = (image, heading, subtext, buttonText) => {
+  const trophyImageELement = document.getElementById("trophyImage");
+  trophyImageELement.src = image;
+
+  const outcomeHeadingElement = document.getElementById("outcomeHeading");
+  outcomeHeadingElement.innerHTML = heading;
+
+  const outcomeSubtextElement = document.getElementById("outcomeSubtext");
+  outcomeSubtextElement.innerHTML = subtext;
+
+  const newGameButtonElement = document.getElementById("newGameButton");
+  newGameButtonElement.innerHTML = buttonText;
+};
+
 let userPoints = 0;
 let computerPoints = 0;
 let draws = 0;
+
+const winnerTrophy = "./images/trophy.png";
+const brokenTrophty = "./images/broken-trophy.png";
 
 const game = (playerSelection) => {
   const computerSelection = computerPlay();
@@ -135,14 +152,40 @@ const game = (playerSelection) => {
   displayCurrentResults(userPoints, computerPoints, draws);
 
   if (userPoints === 5) {
+    // Hide game and show outcome screen
+    const gameSection = document.getElementById("gameSection");
+    gameSection.style.display = "none";
+
+    const outcomeSection = document.getElementById("outcomeSection");
+    outcomeSection.style.display = "flex";
+
+    displayOutcome(
+      winnerTrophy,
+      "Yaaaay!",
+      "You outsmarted the computer! Congratulations!",
+      "Wanna do it again?"
+    );
+
     userPoints = 0;
     computerPoints = 0;
     draws = 0;
-    return console.log("You won");
   } else if (computerPoints === 5) {
+    // Hide game and show outcome screen
+    const gameSection = document.getElementById("gameSection");
+    gameSection.style.display = "none";
+
+    const outcomeSection = document.getElementById("outcomeSection");
+    outcomeSection.style.display = "flex";
+
+    displayOutcome(
+      brokenTrophty,
+      "Oh nooo!",
+      "Unfortunately computer got you this time!",
+      "Wanna try again?"
+    );
+
     userPoints = 0;
     computerPoints = 0;
     draws = 0;
-    return console.log("Sorry, Computer won!");
   }
 };
