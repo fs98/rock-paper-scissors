@@ -29,10 +29,6 @@ body {
   align-items: center;
 }
 
-.welcome-section { 
-  display: none; /* temporary */
-}
-
 .welcome-section h1, h3 {
   text-align: center;
   text-transform: uppercase;
@@ -40,7 +36,7 @@ body {
   font-size: 30px;
 }
 
-.welcome-section h3 span {
+.welcome-section h3 {
   color: var(--electric-indigo);
   font-size: 32px;
 }
@@ -68,7 +64,7 @@ body {
 /* Options section */
 
 .game-section {
-  /* display: none; */
+  display: none;
 }
 
 .game-section h3 {
@@ -159,6 +155,7 @@ body {
 
 .outcome-section {
   display: none;
+  text-align: center;
 }
 
 .outcome-section h3 {
