@@ -21,7 +21,8 @@
     </section>
 
     <section class="game-section">
-      <h3>What is it gonna be?</h3>
+      <h3>It's you against the computer!</h3>
+      <h4>So what is it gonna be?</h4>
 
       <ul class="options">
         <li onclick="game('rock')">
@@ -37,6 +38,48 @@
           <h3>scissors</h3>
         </li>
       </ul>
+
+      <ul class="choices">
+        <li>
+          You played
+          <p id="userChoice">
+            /
+          </p>
+        </li>
+        <li>
+          Computer played
+          <p id="computerChoice">
+            /
+          </p>
+        </li>
+      </ul>
+
+      <p>Round
+        <span id="roundNumber">1</span>
+      </p>
+      <h6 id="result" class="result">
+        Nobody wins
+      </h6>
+
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3">Realtime results</th>
+          </tr>
+          <tr>
+            <th>Your Points</th>
+            <th>Computer Points</th>
+            <th>Draws</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="userPoints">0</td>
+            <td id="computerPoints">0</td>
+            <td id="draws">0</td>
+          </tr>
+        </tbody>
+      </table>
     </section>
   </body>
 </html>
