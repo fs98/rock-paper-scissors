@@ -1,7 +1,9 @@
 const startGame = () => {
-  const welcomeSection = document.getElementsByClassName("welcome-section")[0];
-  console.log(welcomeSection);
-  welcomeSection.style.display = "none";
+  const welcomeSectionElement = document.getElementById("welcomeSection");
+  welcomeSectionElement.style.display = "none";
+
+  const gameSectionElement = document.getElementById("gameSection");
+  gameSectionElement.style.display = "flex";
 };
 
 /**
