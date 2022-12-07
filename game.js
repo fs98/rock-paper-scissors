@@ -129,6 +129,25 @@ let userPoints = 0;
 let computerPoints = 0;
 let draws = 0;
 
+const startNewGame = () => {
+  userPoints = 0;
+  computerPoints = 0;
+  draws = 0;
+
+  // Hide outcome screen and show game
+  const gameSection = document.getElementById("gameSection");
+  gameSection.style.display = "flex";
+
+  const outcomeSection = document.getElementById("outcomeSection");
+  outcomeSection.style.display = "none";
+
+  displayCurrentResults(userPoints, computerPoints, draws);
+  displayChoices(null, null);
+  displayResult(null, null);
+  displayRoundNumber(userPoints + computerPoints + draws);
+  displayCurrentResults(userPoints, computerPoints, draws);
+};
+
 const winnerTrophy = "./images/trophy.png";
 const brokenTrophty = "./images/broken-trophy.png";
 
@@ -163,12 +182,8 @@ const game = (playerSelection) => {
       winnerTrophy,
       "Yaaaay!",
       "You outsmarted the computer! Congratulations!",
-      "Wanna do it again?"
+      "Do it again?"
     );
-
-    userPoints = 0;
-    computerPoints = 0;
-    draws = 0;
   } else if (computerPoints === 5) {
     // Hide game and show outcome screen
     const gameSection = document.getElementById("gameSection");
@@ -181,11 +196,7 @@ const game = (playerSelection) => {
       brokenTrophty,
       "Oh nooo!",
       "Unfortunately computer got you this time!",
-      "Wanna try again?"
+      "Try again?"
     );
-
-    userPoints = 0;
-    computerPoints = 0;
-    draws = 0;
   }
 };
