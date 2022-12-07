@@ -9,29 +9,82 @@
     <link rel="stylesheet" href="./style.css">
   </head>
   <body>
-    <section class="welcome-section">
-      <h1>Welcome to</h1>
-      <h3>Paper, Rock, Scissors game</h3>
-      <img height="300" src="./images/rock-paper-scissors-game-rules.png" alt="rock, paper, scissors game rules">
+    <section class="welcome-section" id="welcomeSection">
+      <h1>Do you think you can win</h1>
+      <h3>Paper, Rock, Scissors</h3>
+      <h1>Game?</h1>
+
+      <img height="250" src="./images/rock-paper-scissors-game-rules.png" alt="rock, paper, scissors game rules">
       <button onclick="startGame()">Start</button>
     </section>
-    <section class="game-section">
-      <h1>Round 1</h1>
-      <h3>Choose your weapon</h3>
+
+    <section class="game-section" id="gameSection">
+      <h3>It's you against the computer!</h3>
+      <h4>So what is it gonna be?</h4>
+
       <ul class="options">
-        <li onclick="playRound('rock')">
-          <img height="80" src="./images/rock.png" alt="hand-showing-paper">
+        <li onclick="game('rock')">
+          <img height="60" src="./images/rock.png" alt="hand-showing-paper">
           <h3>rock</h3>
         </li>
-        <li onclick="playRound('paper')">
-          <img height="80" src="./images/paper.png" alt="hand-showing-paper">
+        <li onclick="game('paper')">
+          <img height="60" src="./images/paper.png" alt="hand-showing-paper">
           <h3>paper</h3>
         </li>
-        <li onclick="playRound('scissors')">
-          <img height="80" src="./images/scissors.png" alt="hand-showing-paper">
+        <li onclick="game('scissors')">
+          <img height="60" src="./images/scissors.png" alt="hand-showing-paper">
           <h3>scissors</h3>
         </li>
       </ul>
+
+      <ul class="choices">
+        <li>
+          You played
+          <p id="userChoice">
+            /
+          </p>
+        </li>
+        <li>
+          Computer played
+          <p id="computerChoice">
+            /
+          </p>
+        </li>
+      </ul>
+
+      <p>Round
+        <span id="roundNumber">1</span>
+      </p>
+      <h6 id="result" class="result">
+        Nobody wins
+      </h6>
+
+      <table>
+        <thead>
+          <tr>
+            <th colspan="3">Realtime results</th>
+          </tr>
+          <tr>
+            <th>Your Points</th>
+            <th>Computer Points</th>
+            <th>Draws</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="userPoints">0</td>
+            <td id="computerPoints">0</td>
+            <td id="draws">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="outcome-section" id="outcomeSection">
+      <img src="" height="100" alt="trophy-image" id="trophyImage">
+      <h3 id="outcomeHeading"></h3>
+      <h4 id="outcomeSubtext"></h4>
+      <button id="newGameButton" onclick="startNewGame()"></button>
     </section>
   </body>
 </html>

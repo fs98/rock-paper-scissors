@@ -2,7 +2,10 @@
 
 :root {
   --ripe-lemon: #f7ca18;
-  --gin-fizz: #fff9de
+  --gin-fizz: #fff9de;
+  --daily-bush: #5a228b;
+  --electric-indigo: #8c14fc;
+  --silver: #bfbfbf
 }
 
 body {
@@ -15,7 +18,7 @@ body {
   height: 100vh;
 }
 
-.welcome-section, .game-section {
+.welcome-section, .game-section, .outcome-section {
   background-color: var(--gin-fizz);
   width: fit-content;
   padding: 30px;
@@ -26,14 +29,16 @@ body {
   align-items: center;
 }
 
-.welcome-section { 
-  display: none; /* temporary */
-}
-
 .welcome-section h1, h3 {
   text-align: center;
   text-transform: uppercase;
   margin: 5px;
+  font-size: 30px;
+}
+
+.welcome-section h3 {
+  color: var(--electric-indigo);
+  font-size: 32px;
 }
 
 .welcome-section img {
@@ -58,9 +63,20 @@ body {
 
 /* Options section */
 
+.game-section {
+  display: none;
+}
+
 .game-section h3 {
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 700;
+  color: var(--electric-indigo);
+  font-size: 30px;
+  margin: 0;
+}
+
+.game-section h4 {
+  margin-top: 10px;
 }
 
 .game-section ul {
@@ -71,15 +87,95 @@ body {
 .options {
   display: flex;
   gap: 30px;
+  margin-top: 40px;
 }
 
-.options li {
+.options li h3 {
   text-decoration: none;
   color: black;
   cursor: pointer;
+  font-weight: normal;
+  font-size: 15px;
 }
 
 .options li:hover {
   opacity: 50%;
   transition: 0.5s;
 } 
+
+.choices {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  text-align: center;
+}
+
+.choices li {
+  color: var(--electric-indigo); 
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.choices li p{
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  visibility: hidden;
+}
+
+.game-section p {
+  font-size: 20px;
+  margin: 20px 0px 0px 0px;
+}
+
+.game-section .result {
+  font-size: 20px;
+  visibility: hidden;
+  margin: 10px 0;
+}
+
+.game-section table {
+  margin-top: 10px;
+}
+
+.game-section table th {
+  padding: 10px 20px;
+}
+
+.game-section thead :first-child th {
+  font-size: 20px;
+}
+
+.game-section tr{
+  text-align: center;
+}
+
+/* Outcome Section */
+
+.outcome-section {
+  display: none;
+  text-align: center;
+}
+
+.outcome-section h3 {
+ margin: 20px 0px;
+}
+
+.outcome-section h4 {
+  font-size: 20px;
+  margin: 0px 0px 20px 0px;
+}
+
+.outcome-section button {
+  font-size: 15px;
+  border: 0;
+  background-color: var(--ripe-lemon);
+  padding: 15px 30px;
+  font-weight: bold;
+}
+
+.outcome-section button:hover {
+  opacity: 80%;
+  transition: 0.5s;
+}
