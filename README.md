@@ -4,4 +4,4 @@
 
 The third assignment in a Brainnest Front Training Program - JavaScript Assignment - Part 1
 
-> **Important Note:** The game progress is followed through console.
+The game is written using vanilla JavaScript
