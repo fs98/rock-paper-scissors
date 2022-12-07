@@ -2,7 +2,10 @@
 
 :root {
   --ripe-lemon: #f7ca18;
-  --gin-fizz: #fff9de
+  --gin-fizz: #fff9de;
+  --daily-bush: #5a228b;
+  --electric-indigo: #8c14fc;
+  --silver: #bfbfbf
 }
 
 body {
@@ -34,6 +37,12 @@ body {
   text-align: center;
   text-transform: uppercase;
   margin: 5px;
+  font-size: 30px;
+}
+
+.welcome-section h3 span {
+  color: var(--electric-indigo);
+  font-size: 32px;
 }
 
 .welcome-section img {
@@ -58,9 +67,15 @@ body {
 
 /* Options section */
 
+.game-section {
+  /* display: none; */
+}
+
 .game-section h3 {
   text-transform: uppercase;
-  font-weight: bold;
+  font-weight: 700;
+  color: var(--electric-indigo);
+  font-size: 30px;
 }
 
 .game-section ul {
@@ -71,12 +86,15 @@ body {
 .options {
   display: flex;
   gap: 30px;
+  margin-top: 40px;
 }
 
-.options li {
+.options li h3 {
   text-decoration: none;
   color: black;
   cursor: pointer;
+  font-weight: normal;
+  font-size: 15px;
 }
 
 .options li:hover {
