@@ -90,6 +90,10 @@ body {
   margin-top: 40px;
 }
 
+.options li {
+  cursor: pointer;
+}
+
 .options li h3 {
   text-decoration: none;
   color: black;
@@ -173,6 +177,7 @@ body {
   background-color: var(--ripe-lemon);
   padding: 15px 30px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .outcome-section button:hover {
