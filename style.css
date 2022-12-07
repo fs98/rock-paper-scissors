@@ -67,15 +67,16 @@ body {
 
 /* Options section */
 
-.game-section {
-  /* display: none; */
-}
-
 .game-section h3 {
   text-transform: uppercase;
   font-weight: 700;
   color: var(--electric-indigo);
   font-size: 30px;
+  margin: 0;
+}
+
+.game-section h4 {
+  margin-top: 10px;
 }
 
 .game-section ul {
@@ -101,3 +102,52 @@ body {
   opacity: 50%;
   transition: 0.5s;
 } 
+
+.choices {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  text-align: center;
+}
+
+.choices li {
+  color: var(--electric-indigo); 
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 20px;
+}
+
+.choices li p{
+  color: black;
+  font-weight: bold;
+  text-transform: uppercase;
+  visibility: hidden;
+}
+
+.game-section p {
+  font-size: 20px;
+  margin: 20px 0px 0px 0px;
+}
+
+.game-section .result {
+  font-size: 20px;
+  visibility: hidden;
+  margin: 10px 0;
+}
+
+.game-section table {
+  margin-top: 10px;
+}
+
+.game-section table th {
+  padding: 10px 20px;
+}
+
+.game-section thead :first-child th {
+  font-size: 20px;
+}
+
+.game-section tr{
+  text-align: center;
+}
+
