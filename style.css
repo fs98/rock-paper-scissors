@@ -18,7 +18,7 @@ body {
   height: 100vh;
 }
 
-.welcome-section, .game-section {
+.welcome-section, .game-section, .outcome-section {
   background-color: var(--gin-fizz);
   width: fit-content;
   padding: 30px;
@@ -66,6 +66,10 @@ body {
 }
 
 /* Options section */
+
+.game-section {
+  /* display: none; */
+}
 
 .game-section h3 {
   text-transform: uppercase;
@@ -151,3 +155,30 @@ body {
   text-align: center;
 }
 
+/* Outcome Section */
+
+.outcome-section {
+  display: none;
+}
+
+.outcome-section h3 {
+ margin: 20px 0px;
+}
+
+.outcome-section h4 {
+  font-size: 20px;
+  margin: 0px 0px 20px 0px;
+}
+
+.outcome-section button {
+  font-size: 15px;
+  border: 0;
+  background-color: var(--ripe-lemon);
+  padding: 15px 30px;
+  font-weight: bold;
+}
+
+.outcome-section button:hover {
+  opacity: 80%;
+  transition: 0.5s;
+}
