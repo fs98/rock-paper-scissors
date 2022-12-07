@@ -4,6 +4,12 @@ const startGame = () => {
   welcomeSection.style.display = "none";
 };
 
+/**
+ *
+ * Game logic
+ *
+ */
+
 const options = ["rock", "paper", "scissors"];
 
 const computerPlay = () => {
@@ -13,38 +19,96 @@ const computerPlay = () => {
 
 const playRound = (playerSelection, computerSelection) => {
   if (playerSelection === computerSelection) {
-    alert("It's a draw, nobody wins!");
-    return null;
+    return {
+      message: "It's a draw, nobody wins!",
+      result: null,
+    };
   }
 
   switch (playerSelection) {
     case "rock":
       if (computerSelection === "scissors") {
-        alert("You Win! Rock beats Scissors");
-        return true;
+        return {
+          message: "You Win! Rock beats Scissors",
+          result: true,
+        };
       } else {
-        alert("You Lose! Paper beats Rock");
-        return false;
+        return {
+          message: "You Lose! Paper beats Rock",
+          result: false,
+        };
       }
 
     case "paper":
       if (computerSelection === "rock") {
-        alert("You Win! Paper beats Rock");
-        return true;
+        return {
+          message: "You Win! Paper beats Rock",
+          result: true,
+        };
       } else {
-        alert("You Lose! Scissors beat Paper");
-        return false;
+        return {
+          message: "You Lose! Scissors beat Paper",
+          result: false,
+        };
       }
 
     case "scissors":
       if (computerSelection === "paper") {
-        alert("You Win! Scissors beat Paper");
-        return true;
+        return {
+          message: "You Win! Scissors beat Paper",
+          result: true,
+        };
       } else {
-        alert("You Lose! Rock beats Scissors");
-        return false;
+        return {
+          message: "You Lose! Rock beats Scissors",
+          result: false,
+        };
       }
   }
+};
+
+const displayChoices = (playerSelection, computerSelection) => {
+  const userChoiceDisplayElement = document.getElementById("userChoice");
+  userChoiceDisplayElement.style.visibility = "visible";
+  userChoiceDisplayElement.innerHTML = playerSelection;
+
+  const computerChoiceDisplayElement =
+    document.getElementById("computerChoice");
+  computerChoiceDisplayElement.style.visibility = "visible";
+  computerChoiceDisplayElement.innerHTML = computerSelection;
+};
+
+const displayResult = (result, message) => {
+  const resultDisplayElement = document.getElementById("result");
+  resultDisplayElement.style.visibility = "visible";
+  resultDisplayElement.innerHTML = message;
+
+  let color;
+  if (result === true) {
+    color = "#2ecc71";
+  } else if (result === false) {
+    color = "#d91e18";
+  } else {
+    color = "#f39c12";
+  }
+
+  resultDisplayElement.style.color = color;
+};
+
+const displayRoundNumber = (round) => {
+  const displayRoundElement = document.getElementById("roundNumber");
+  displayRoundElement.innerHTML = round;
+};
+
+const displayCurrentResults = (userPoints, computerPoints, draws) => {
+  const userPointsTableCell = document.getElementById("userPoints");
+  userPointsTableCell.innerHTML = userPoints;
+
+  const computerPointsTableCell = document.getElementById("computerPoints");
+  computerPointsTableCell.innerHTML = computerPoints;
+
+  const drawsTableCell = document.getElementById("draws");
+  drawsTableCell.innerHTML = draws;
 };
 
 let userPoints = 0;
@@ -53,15 +117,22 @@ let draws = 0;
 
 const game = (playerSelection) => {
   const computerSelection = computerPlay();
-  const result = playRound(playerSelection, computerSelection);
 
-  if (result === true) {
+  displayChoices(playerSelection, computerSelection);
+
+  const playedRound = playRound(playerSelection, computerSelection);
+  displayResult(playedRound.result, playedRound.message);
+
+  if (playedRound.result === true) {
     userPoints = userPoints + 1;
-  } else if (result === false) {
+  } else if (playedRound.result === false) {
     computerPoints = computerPoints + 1;
   } else {
     draws = draws + 1;
   }
+
+  displayRoundNumber(userPoints + computerPoints + draws);
+  displayCurrentResults(userPoints, computerPoints, draws);
 
   if (userPoints === 5) {
     userPoints = 0;
