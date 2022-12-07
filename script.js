@@ -10,7 +10,7 @@ window.onbeforeunload = (event) => {
 
 const startGame = () => {
   const welcomeSectionElement = document.getElementById("welcomeSection");
-  welcomeSectionElement.style.display = "none";
+  document.body.removeChild(welcomeSectionElement);
 
   const gameSectionElement = document.getElementById("gameSection");
   gameSectionElement.style.display = "flex";
