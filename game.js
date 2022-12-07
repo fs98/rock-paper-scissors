@@ -1,3 +1,13 @@
+window.onbeforeunload = (event) => {
+  const e = event || window.event;
+  // Cancel the event
+  e.preventDefault();
+  if (e) {
+    e.returnValue = ""; // Legacy method for cross browser support
+  }
+  return ""; // Legacy method for cross browser support
+};
+
 const startGame = () => {
   const welcomeSectionElement = document.getElementById("welcomeSection");
   welcomeSectionElement.style.display = "none";
