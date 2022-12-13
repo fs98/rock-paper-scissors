@@ -1,13 +1,3 @@
-window.onbeforeunload = (event) => {
-  const e = event || window.event;
-  // Cancel the event
-  e.preventDefault();
-  if (e) {
-    e.returnValue = ""; // Legacy method for cross browser support
-  }
-  return ""; // Legacy method for cross browser support
-};
-
 const startGame = () => {
   const welcomeSectionElement = document.getElementById("welcomeSection");
   document.body.removeChild(welcomeSectionElement);
@@ -15,12 +5,6 @@ const startGame = () => {
   const gameSectionElement = document.getElementById("gameSection");
   gameSectionElement.style.display = "flex";
 };
-
-/**
- *
- * Game logic
- *
- */
 
 const options = ["rock", "paper", "scissors"];
 
@@ -211,4 +195,14 @@ const game = (playerSelection) => {
       "Try again?"
     );
   }
+};
+
+window.onbeforeunload = (event) => {
+  const e = event || window.event;
+  // Cancel the event
+  e.preventDefault();
+  if (e) {
+    e.returnValue = ""; // Legacy method for cross browser support
+  }
+  return ""; // Legacy method for cross browser support
 };
