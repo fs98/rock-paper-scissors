@@ -1,13 +1,3 @@
-window.onbeforeunload = (event) => {
-  const e = event || window.event;
-  // Cancel the event
-  e.preventDefault();
-  if (e) {
-    e.returnValue = ""; // Legacy method for cross browser support
-  }
-  return ""; // Legacy method for cross browser support
-};
-
 const startGame = () => {
   const welcomeSectionElement = document.getElementById("welcomeSection");
   document.body.removeChild(welcomeSectionElement);
@@ -15,12 +5,6 @@ const startGame = () => {
   const gameSectionElement = document.getElementById("gameSection");
   gameSectionElement.style.display = "flex";
 };
-
-/**
- *
- * Game logic
- *
- */
 
 const options = ["rock", "paper", "scissors"];
 
@@ -161,7 +145,7 @@ const startNewGame = () => {
 };
 
 const winnerTrophy = "./images/trophy.png";
-const brokenTrophty = "./images/broken-trophy.png";
+const brokenTrophy = "./images/broken-trophy.png";
 
 const game = (playerSelection) => {
   const computerSelection = computerPlay();
@@ -205,10 +189,20 @@ const game = (playerSelection) => {
     outcomeSection.style.display = "flex";
 
     displayOutcome(
-      brokenTrophty,
+      brokenTrophy,
       "Oh nooo!",
       "Unfortunately computer got you this time!",
       "Try again?"
     );
   }
+};
+
+window.onbeforeunload = (event) => {
+  const e = event || window.event;
+  // Cancel the event
+  e.preventDefault();
+  if (e) {
+    e.returnValue = ""; // Legacy method for cross browser support
+  }
+  return ""; // Legacy method for cross browser support
 };
