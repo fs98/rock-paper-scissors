@@ -161,7 +161,7 @@ const startNewGame = () => {
 };
 
 const winnerTrophy = "./images/trophy.png";
-const brokenTrophty = "./images/broken-trophy.png";
+const brokenTrophy = "./images/broken-trophy.png";
 
 const game = (playerSelection) => {
   const computerSelection = computerPlay();
@@ -205,7 +205,7 @@ const game = (playerSelection) => {
     outcomeSection.style.display = "flex";
 
     displayOutcome(
-      brokenTrophty,
+      brokenTrophy,
       "Oh nooo!",
       "Unfortunately computer got you this time!",
       "Try again?"
